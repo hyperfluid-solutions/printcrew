@@ -1,5 +1,5 @@
 ---
-id: project-intro
+id: intro
 title: Welcome to the Print Crew
 ---
 
@@ -27,13 +27,13 @@ Many websites are not optimized for printing, leading to wasted paper, time, and
 ## Getting Started
 
 1. **Explore Our Documentation:**  
-   Check out our step-by-step guides on [Opening Chrome Developer Tools](/docs/opening-chrome-devtools), [Editing Stylesheets](/docs/locating-and-editing-stylesheets), and [Testing Print Styles](/docs/testing-print-styles).
+   Check out our step-by-step guide on [Making Styles in Chrome](/docs/category/chrome)
 
 2. **Experiment and Test:**  
    Use Chrome Developer Tools to modify and preview print styles in real time. Don’t forget to use the "Print to PDF" feature to see exactly how your styles will look when printed.
 
 3. **Contribute Your Styles:**  
-   Follow our [Contributing New Site Styles](/docs/contributing-new-site-styles) guide to add your new CSS file, update the `manifest.json`, and submit a pull request on GitHub.
+   Follow our [Contributing New Site Styles](/docs/tutorial/add-to-print-crew) guide to add a print style to a new webpage.
 
 Thank you for being a part of the Print Crew. Your contributions help make the web a more printer-friendly place for everyone!
 

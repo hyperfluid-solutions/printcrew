@@ -1,7 +1,9 @@
-name: Check PR
+name: Extension Changes PR Checker
 
 on:
   pull_request:
+    paths:
+      - "!docs"
 
 jobs:
   verify-css:
