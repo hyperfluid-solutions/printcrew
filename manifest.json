@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Print Crew",
+  "version": "1.0",
+  "description": "Styles pages for print.",
+  "homepage_url": "https://hyperfluid-solutions.github.io/printcrew",
+  "content_scripts": [],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "webNavigation",
+    "scripting"
+  ]
+}
