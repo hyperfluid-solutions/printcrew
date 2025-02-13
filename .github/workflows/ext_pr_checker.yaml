@@ -7,7 +7,7 @@ on:
       - "!docs/**"
 
 jobs:
-  verify-css:
+  verify-extension:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
