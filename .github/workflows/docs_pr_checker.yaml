@@ -3,14 +3,15 @@ name: Docs Changes PR Checker
 on:
   pull_request:
     paths:
-      - "docs"
+      - "docs/**"
+      - ".github/workflows/docs_pr_checker.yaml"
 
 jobs:
   verify-css:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: docs
+        working-directory: "docs"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -18,7 +19,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .tool-versions
+          node-version-file: ".tool-versions"
           cache: npm
 
       - name: Install dependencies
