@@ -1,0 +1,81 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+name: release-please
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      docs_release_created: ${{ steps.release.outputs['docs--release_created'] }}
+      extension_release_created: ${{ steps.release.outputs['.--release_created'] }}
+      extension_tag_name: ${{ steps.release.outputs['.--tag-name'] }}
+      extension_version: ${{ steps.release.outputs['.--major'] }}.${{ steps.release.outputs['.--minor'].${{ steps.release.outputs['.--patch'] }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          # this assumes that you have created a personal access token
+          # (PAT) and configured it as a GitHub action secret named
+          # `RELEASE_PLEASE_TOKEN` (this secret name is not important).
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+          # optional. customize path to release-please-config.json
+          config-file: release-please-config.json
+          # optional. customize path to .release-please-manifest.json
+          manifest-file: .release-please-manifest.json
+  release-extension:
+    runs-on: ubuntu-latest
+    needs: release-please
+    if: ${{ needs.release-please.outputs.extension_release_created }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create Extension package
+        run: |
+          make build
+      - name: Upload Release Artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload ${{ needs.release-please.outputs.extension_tag_name }}  ./build/printcrew-${{ needs.release-please-outputs.extension_version }}.zip
+  release-docs:
+    runs-on: ubuntu-latest
+    needs: release-please
+    if: ${{ needs.release-please.outputs.docs_release_created }}
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: docs
+      url: ${{ steps.release-docs.outputs.page_url}}
+    defaults:
+      run:
+        working-directory: "docs"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".tool-versions"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build website
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
