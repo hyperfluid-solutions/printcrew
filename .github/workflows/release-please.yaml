@@ -16,7 +16,7 @@ jobs:
       docs_release_created: ${{ steps.release.outputs['docs--release_created'] }}
       extension_release_created: ${{ steps.release.outputs['.--release_created'] }}
       extension_tag_name: ${{ steps.release.outputs['.--tag-name'] }}
-      extension_version: ${{ steps.release.outputs['.--major'] }}.${{ steps.release.outputs['.--minor'].${{ steps.release.outputs['.--patch'] }}
+      extension_version: ${{ steps.release.outputs['.--major'] }}.${{ steps.release.outputs['.--minor']}}.${{ steps.release.outputs['.--patch'] }}
     steps:
       - uses: googleapis/release-please-action@v4
         id: release
