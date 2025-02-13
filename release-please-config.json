@@ -3,7 +3,14 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "initial-version": "1.0.0"
+      "initial-version": "1.0.0",
+      "exclude-paths": [
+        "docs"
+      ]
+    },
+    "docs": {
+      "release-type": "node",
+      "initial-version": "0.0.0"
     }
   }
 }

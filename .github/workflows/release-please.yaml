@@ -17,9 +17,42 @@ jobs:
         with:
           # this assumes that you have created a personal access token
           # (PAT) and configured it as a GitHub action secret named
-          # `MY_RELEASE_PLEASE_TOKEN` (this secret name is not important).
+          # `RELEASE_PLEASE_TOKEN` (this secret name is not important).
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           # optional. customize path to release-please-config.json
           config-file: release-please-config.json
           # optional. customize path to .release-please-manifest.json
           manifest-file: .release-please-manifest.json
+  release-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.release-docs.outputs.page_url}}
+    defaults:
+      run:
+        working-directory: docs
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .tool-versions
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+      - name: Build website
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

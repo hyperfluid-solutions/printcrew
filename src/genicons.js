@@ -27,4 +27,9 @@ function printWithSizeOpts(file, iconName) {
 sharp(`./src/icons/icon.svg`)
   .png()
   .resize(Object.assign({}, sizeOptsDefaults, { height: 128, width: 128 }))
-  .toFile(`./icons/storeicon.png`);
+  .toFile(`./assets/storeicon.png`);
+
+sharp(`./src/icons/icon.svg`)
+    .png()
+    .resize(Object.assign({}, sizeOptsDefaults, { height: 32, width: 32 }))
+    .toFile(`./assets/favicon.ico`);

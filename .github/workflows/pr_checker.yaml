@@ -13,7 +13,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".tools-versions"
+          node-version-file: .tool-versions
           cache: "npm"
 
       - name: Verify CSS Files Are Wrapped in @media print
