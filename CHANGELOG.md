@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/hyperfluid-solutions/printcrew/compare/printcrew-v1.1.1...printcrew-v1.1.2) (2025-02-15)
+
+
+### Bug Fixes
+
+* fixing docs build path ref ([2b70147](https://github.com/hyperfluid-solutions/printcrew/commit/2b701474a0ece343ee7ba12afa0f1e67af3fd6a5))
+
 ## [1.1.1](https://github.com/hyperfluid-solutions/printcrew/compare/printcrew-v1.1.0...printcrew-v1.1.1) (2025-02-15)
 
 
