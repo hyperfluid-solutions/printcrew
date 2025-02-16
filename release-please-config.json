@@ -4,8 +4,16 @@
     ".": {
       "release-type": "node",
       "initial-version": "1.0.0",
+      "separate-pull-requests": true,
       "exclude-paths": [
-        "docs"
+        "docs",
+        ".github",
+        "assets",
+        "scripts",
+        "Makefile",
+        ".release-please-manifest.json",
+        "release-please-config.json",
+        "README.md"
       ]
     },
     "docs": {
