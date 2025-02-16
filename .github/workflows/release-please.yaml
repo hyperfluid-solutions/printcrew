@@ -35,7 +35,7 @@ jobs:
       - run: |
           echo '### Release Please Outputs' >> $GITHUB_STEP_SUMMARY
           echo '' >> $GITHUB_STEP_SUMMARY
-          echo '${{ steps.release.outputs }}' >> $GITHUB_STEP_SUMMARY
+          echo '${{ fromJson(steps.release.outputs) }}' >> $GITHUB_STEP_SUMMARY
   release-extension:
     runs-on: ubuntu-latest
     needs: release-please
@@ -59,7 +59,7 @@ jobs:
       id-token: write
     environment:
       name: docs
-      url: ${{ steps.release-docs.outputs.page_url}}
+      url: ${{ steps.release-docs.outputs.page_url }}
     defaults:
       run:
         working-directory: "docs"
