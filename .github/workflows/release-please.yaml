@@ -36,8 +36,8 @@ jobs:
           echo '### Release Please Outputs' >> $GITHUB_STEP_SUMMARY
           echo '' >> $GITHUB_STEP_SUMMARY
           echo '```json' >> $GITHUB_STEP_SUMMARY
-          $RELEASE_OUTPUTS=$(cat << EOL
-            ${{ toJson(steps.release.outputs) }}
+          $RELEASE_OUTPUTS=echo $(cat << EOL
+          ${{ toJson(steps.release.outputs) }}
           EOL
           )
           echo '$RELEASE_OUTPUTS' >> $GITHUB_STEP_SUMMARY
