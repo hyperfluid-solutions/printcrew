@@ -3,8 +3,8 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "initial-version": "1.0.0",
       "separate-pull-requests": true,
+      "draft": true,
       "exclude-paths": [
         "docs",
         ".github",
@@ -18,7 +18,7 @@
     },
     "docs": {
       "release-type": "node",
-      "initial-version": "0.0.0"
+      "separate-pull-requests": true
     }
   }
 }

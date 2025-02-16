@@ -23,3 +23,8 @@ jobs:
 
       - name: Verify CSS Files Are Wrapped in @media print
         run: make verifycss
+
+      - name: Verify icons did not change
+        run: |
+          npm run genicons
+          make error_if_icon_changes
