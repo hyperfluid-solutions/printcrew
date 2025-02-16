@@ -32,14 +32,12 @@ jobs:
           config-file: release-please-config.json
           # optional. customize path to .release-please-manifest.json
           manifest-file: .release-please-manifest.json
-      - run: |
-          echo '### Release Please Outputs' >> $GITHUB_STEP_SUMMARY
+      - env:
+          RELEASE_OUTPUTS: ${{ toJson(steps.release.outputs) }}
+        run: |
+          echo '### Release Please Outputs as JSON' >> $GITHUB_STEP_SUMMARY
           echo '' >> $GITHUB_STEP_SUMMARY
           echo '```json' >> $GITHUB_STEP_SUMMARY
-          RELEASE_OUTPUTS=$(cat << EOL
-          ${{ toJson(steps.release.outputs) }}
-          EOL
-          )
           echo '$RELEASE_OUTPUTS' >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
   release-extension:
