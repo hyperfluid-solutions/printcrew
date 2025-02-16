@@ -36,9 +36,11 @@ jobs:
           echo "### Release Please Outputs" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "```json" >> $GITHUB_STEP_SUMMARY
-          cat > $GITHUB_STEP_SUMMARY << EOL
+          $RELEASE_OUTPUTS=$(cat << EOL
             ${{ toJson(steps.release.outputs) }}
           EOL
+          )
+          echo "$RELEASE_OUTPUTS" >> $GITHUB_STEP_SUMMARY
           echo "```" >> $GITHUB_STEP_SUMMARY
   release-extension:
     runs-on: ubuntu-latest
