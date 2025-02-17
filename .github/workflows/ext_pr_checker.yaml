@@ -26,5 +26,5 @@ jobs:
 
       - name: Verify icons did not change
         run: |
-          npm run genicons
+          make genicons
           make error_if_icon_changes

@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "genicons": "node ./src/genicons.js",
+    "genicons": "make genicons",
     "verifycss": "make verifycss",
-    "test": "npm run verifycss"
+    "test": "npm run genicons && npm run verifycss"
   },
   "author": "",
   "license": "ISC",
