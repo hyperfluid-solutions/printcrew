@@ -1,7 +1,10 @@
 .PHONY: build
 
+genicons:
+	node ./scripts/genicons.js
+
 error_if_icon_changes:
-	git status icons | grep -q 'modified' && exit 1
+	bash ./scripts/genicons.ci.test.sh
 
 verifycss:
 	bash ./scripts/verify-css.sh
