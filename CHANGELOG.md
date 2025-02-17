@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/hyperfluid-solutions/printcrew/compare/printcrew-v1.1.2...printcrew-v1.1.3) (2025-02-17)
+
+
+### Bug Fixes
+
+* making printer less visible when no styles available, adding test for if icon changed without building to pr action ([7139c7e](https://github.com/hyperfluid-solutions/printcrew/commit/7139c7edfa0ca3a4d7395115f3c0a49661afc10b))
+
 ## [1.1.2](https://github.com/hyperfluid-solutions/printcrew/compare/printcrew-v1.1.1...printcrew-v1.1.2) (2025-02-15)
 
 
