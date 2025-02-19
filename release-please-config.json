@@ -5,6 +5,7 @@
     ".": {
       "release-type": "node",
       "draft": true,
+      "initial-version": "1.0.0",
       "exclude-paths": [
         "docs",
         ".github",
@@ -24,7 +25,8 @@
       ]
     },
     "docs": {
-      "release-type": "node"
+      "release-type": "node",
+      "initial-version": "0.0.1"
     }
   }
 }
