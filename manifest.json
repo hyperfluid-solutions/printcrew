@@ -12,7 +12,12 @@
       "128": "icons/unknown128.png"
     }
   },
-  "content_scripts": [],
+  "content_scripts": [
+    {
+      "matches": ["https://chatgpt.com/c/*"],
+      "css": ["styles/chatgpt/chat/style.css"]
+    }
+  ],
   "background": {
     "service_worker": "src/background.js"
   },
