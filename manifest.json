@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Print Crew",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Styles pages for print.",
   "homepage_url": "https://hyperfluid-solutions.github.io/printcrew",
   "action": {
@@ -14,8 +14,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://chatgpt.com/c/*"],
-      "css": ["styles/chatgpt/chat/style.css"]
+      "matches": [
+        "https://chatgpt.com/c/*"
+      ],
+      "css": [
+        "styles/chatgpt/chat/style.css"
+      ]
     }
   ],
   "background": {
