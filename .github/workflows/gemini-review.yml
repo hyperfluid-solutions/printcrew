@@ -2,15 +2,14 @@ name: Gemini PR Review
 # Thin caller — logic lives in hyperfluid-solutions/actions (reusable workflow).
 # Auth: org secret GEMINI_API_KEY via `secrets: inherit`. Context: root GEMINI.md.
 # On-demand re-run: comment "@gemini-cli /review" (works once merged to default branch).
+# No `concurrency:` here on purpose — the reusable workflow owns it. A group
+# declared at this level cancels the whole run before that job is reached,
+# which is how comments used to destroy in-flight reviews.
 on:
   pull_request:
     types: [opened, synchronize]
   issue_comment:
     types: [created]
-
-concurrency:
-  group: gemini-review-${{ github.event.pull_request.number || github.event.issue.number }}
-  cancel-in-progress: true
 
 # GITHUB_TOKEN scopes for the reusable workflow. A called workflow's token is the
 # intersection of the caller's grant with the callee's own declaration and can never
